@@ -1,0 +1,18 @@
+mkdir $d_dir/Lead
+Lead_dir=$d_dir/Lead
+
+# Populate diffusion, T1w MRI and CT into the directory.
+
+for dir in ls $(FSLdir); do
+
+	SUB=${dir}
+  
+  mkdir $Lead_dir/${SUB}
+  
+  cp $bedpostX/${SUB}/data.nii.gz $Lead_dir/${SUB}/dwi.nii.gz
+  cp $synthsr_dir/${SUB}/${SUB}_T1w_s.nii.gz $Lead_dir/${SUB}/T1w.nii.gz
+  cp ~/Desktop/Tremor/data/${SUB}/anat/${SUB}_CT.nii.gz
+  
+  done
+  
+  
