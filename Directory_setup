@@ -1,7 +1,7 @@
 d_dir=~/Desktop/Tremor/data/derivatives
 FSLdir=$d_dir/FSL
 bedpostX=$d_dir/bedpostX
-mkdir $d_dir/Lead
+mkdir $d_dir/Lead_dwi
 Lead_dir=$d_dir/Lead_dwi
 synthsr_dir=$d_dir/SynthSR
 
