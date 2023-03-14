@@ -11,7 +11,7 @@ for dir in $FSLdir/s*; do
     SUB=${dir: -6}
     echo $SUB
     mkdir $Lead_dir/${SUB}
-    cp $FSLdir/eddy_corrected_data.nii.gz $Lead_dir/${SUB}/dwi.nii.gz
+    cp $FSLdir/${SUB}/eddy_corrected_data.nii.gz $Lead_dir/${SUB}/dwi.nii.gz
     cp $synthsr_dir/${SUB}/${SUB}_T1w_s.nii.gz $Lead_dir/${SUB}/anat_t1.nii.gz
     gunzip $Lead_dir/${SUB}/anat_t1.nii.gz
     rm $Lead_dir/${SUB}/anat_t1.nii.gz
