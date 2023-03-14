@@ -13,11 +13,9 @@ for dir in $FSLdir/s*; do
     mkdir $Lead_dir/${SUB}
     cp $FSLdir/${SUB}/eddy_corrected_data.nii.gz $Lead_dir/${SUB}/dti.nii.gz
     gunzip $Lead_dir/${SUB}/dti.nii.gz
-    rm $Lead_dir/${SUB}/dti.nii.gz
     cp $bedpostX/${SUB}/bvals $Lead_dir/${SUB}/dti.bval
     cp $FSLdir/${SUB}/eddy_corrected_data.eddy_rotated_bvecs $Lead_dir/${SUB}/dti.bvec
     cp $synthsr_dir/${SUB}/${SUB}_T1w_s.nii.gz $Lead_dir/${SUB}/anat_t1.nii.gz
     gunzip $Lead_dir/${SUB}/anat_t1.nii.gz
-    rm $Lead_dir/${SUB}/anat_t1.nii.gz
-    cp ~/Desktop/Tremor/data/${SUB}/anat/${SUB}_CT.nii.gz $Lead_dir/${SUB}/CT.nii.gz
+    cp ~/Desktop/Tremor/data/${SUB}/anat/${SUB}_CT.nii.gz $Lead_dir/${SUB}/postop_ct.nii.gz
 done
