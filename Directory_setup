@@ -18,6 +18,7 @@ for dir in $FSLdir/s*; do
     cp $synthsr_dir/${SUB}/${SUB}_T1w_s.nii.gz $Lead_dir/${SUB}/anat_t1.nii.gz
     gunzip $Lead_dir/${SUB}/anat_t1.nii.gz
     cp ~/Desktop/Tremor/data/${SUB}/anat/${SUB}_CT.nii.gz $Lead_dir/${SUB}/postop_ct.nii.gz
+    gunzip $Lead_dir/${SUB}/postop_ct.nii.gz
 done
 
 # deleted subject 30. No CT available.
