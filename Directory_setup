@@ -2,7 +2,7 @@ d_dir=~/Desktop/Tremor/data/derivatives
 FSLdir=$d_dir/FSL
 bedpostX=$d_dir/bedpostX
 mkdir $d_dir/Lead
-Lead_dir=$d_dir/Lead
+Lead_dir=$d_dir/Lead_dwi
 synthsr_dir=$d_dir/SynthSR
 
 # Populate diffusion, T1w MRI and CT into the directory.
@@ -13,6 +13,7 @@ for dir in $FSLdir/s*; do
     mkdir $Lead_dir/${SUB}
     cp $bedpostX/${SUB}/data.nii.gz $Lead_dir/${SUB}/dwi.nii.gz
     cp $synthsr_dir/${SUB}/${SUB}_T1w_s.nii.gz $Lead_dir/${SUB}/anat_t1.nii.gz
+    gzip $Lead_dir/${SUB}/anat_t1.nii.gz
+    rm $Lead_dir/${SUB}/anat_t1.nii.gz
     cp ~/Desktop/Tremor/data/${SUB}/anat/${SUB}_CT.nii.gz $Lead_dir/${SUB}/CT.nii.gz
 done
-  
