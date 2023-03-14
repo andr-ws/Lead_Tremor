@@ -1,3 +1,5 @@
+d_dir=~/Desktop/Tremor/data/derivatives
+FSLdir=$d_dir/FSL
 mkdir $d_dir/Lead
 Lead_dir=$d_dir/Lead
 
