@@ -1,4 +1,5 @@
-d_dir=~/Desktop/Tremor/data/derivatives
+raw_dir=~/Desktop/Tremor/data
+d_dir=$raw_dir/derivatives
 FSLdir=$d_dir/FSL
 bedpostX=$d_dir/bedpostX
 mkdir $d_dir/Lead_dwi
@@ -10,15 +11,28 @@ synthsr_dir=$d_dir/SynthSR
 for dir in $FSLdir/s*; do
     SUB=${dir: -6}
     echo $SUB
+    
+    # skip subject 30 [ although DWI, no CT :-( ]
+    if [[ "$SUB" == sub-30 ]]; then
+        continue
+    fi
+    
     mkdir $Lead_dir/${SUB}
-    cp $FSLdir/${SUB}/eddy_corrected_data.nii.gz $Lead_dir/${SUB}/dti.nii.gz
+    
+    # copy raw dwi, bval, bvec
+    
+    cp $raw_dir/${SUB}/dwi/${SUB}_DWI.nii.gz $Lead_dir/${SUB}/dti.nii.gz
     gunzip $Lead_dir/${SUB}/dti.nii.gz
-    cp $bedpostX/${SUB}/bvals $Lead_dir/${SUB}/dti.bval
-    cp $FSLdir/${SUB}/eddy_corrected_data.eddy_rotated_bvecs $Lead_dir/${SUB}/dti.bvec
+    cp $raw_dir/${SUB}/dwi/${SUB}_DWI.bval $Lead_dir/${SUB}/dti.bval
+    # copy raw bvecs
+    cp $raw_dir/${SUB}/dwi/${SUB}_DWI.bvec $Lead_dir/${SUB}/dti.bvec
+    
+    # Use SynthSR T1
     cp $synthsr_dir/${SUB}/${SUB}_T1w_s.nii.gz $Lead_dir/${SUB}/anat_t1.nii.gz
     gunzip $Lead_dir/${SUB}/anat_t1.nii.gz
+    
+    # Copy CT
     cp ~/Desktop/Tremor/data/${SUB}/anat/${SUB}_CT.nii.gz $Lead_dir/${SUB}/postop_ct.nii.gz
     gunzip $Lead_dir/${SUB}/postop_ct.nii.gz
+    
 done
-
-# deleted subject 30. No CT available.
