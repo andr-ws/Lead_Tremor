@@ -14,6 +14,7 @@ for dir in $FSLdir/s*; do
     
     # skip subject 30 [ although DWI, no CT :-( ]
     if [[ "$SUB" == sub-30 ]]; then
+        echo "No CT found :("
         continue
     fi
     
