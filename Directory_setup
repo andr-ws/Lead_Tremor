@@ -10,13 +10,14 @@ synthsr_dir=$d_dir/SynthSR
 
 for dir in $FSLdir/s*; do
     SUB=${dir: -6}
-    echo $SUB
     
     # skip subject 30 [ although DWI, no CT :-( ]
     if [[ "$SUB" == sub-30 ]]; then
-        echo "No CT found :("
+        echo "No CT found for $SUB, skipping :("
         continue
     fi
+    
+    echo "Creating dir and formatting Lead inputs for $SUB"
     
     mkdir $Lead_dir/${SUB}
     
