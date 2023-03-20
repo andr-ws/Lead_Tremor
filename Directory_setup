@@ -6,7 +6,7 @@ mkdir $d_dir/Lead_dwi
 Lead_dir=$d_dir/Lead_dwi
 synthsr_dir=$d_dir/SynthSR
 
-# Populate diffusion, T1w MRI and CT into the directory (as per Lead naming convention)
+# Populate diffusion, raw T1w MRI and CT into the directory (as per Lead naming convention)
 
 for dir in $FSLdir/s*; do
     SUB=${dir: -6}
@@ -29,8 +29,8 @@ for dir in $FSLdir/s*; do
     # copy raw bvecs
     cp $raw_dir/${SUB}/dwi/${SUB}_DWI.bvec $Lead_dir/${SUB}/dti.bvec
     
-    # Use SynthSR T1
-    cp $synthsr_dir/${SUB}/${SUB}_T1w_s.nii.gz $Lead_dir/${SUB}/anat_t1.nii.gz
+    # Use raw T1
+    cp $raw_dir/${SUB}/anat/${SUB}_T1w.nii.gz $Lead_dir/${SUB}/anat_t1.nii.gz
     gunzip $Lead_dir/${SUB}/anat_t1.nii.gz
     
     # Copy CT
